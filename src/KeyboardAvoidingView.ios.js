@@ -1,32 +1,33 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   KeyboardAvoidingView as NativeKeyboardAvoidingView,
-  View,
+  View
 } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
+    flex: 1
+  }
 });
 
-const KeyboardAvoidingView = props => (
+const KeyboardAvoidingView = props =>
   <NativeKeyboardAvoidingView
     keyboardVerticalOffset={props.offset || 0}
     behavior="padding"
     {...props}
     style={[styles.container, props.styles]}
   >
-    <View style={styles.container}>{props.children}</View>
-  </NativeKeyboardAvoidingView>
-);
+    <View style={styles.container}>
+      {props.children}
+    </View>
+  </NativeKeyboardAvoidingView>;
 
 KeyboardAvoidingView.propTypes = {
-  offset: React.PropTypes.number,
-  children: React.PropTypes.node,
-  styles: React.PropTypes.array,
+  offset: PropTypes.number,
+  children: PropTypes.node,
+  styles: PropTypes.array
 };
 
 export default KeyboardAvoidingView;
